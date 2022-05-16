@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const { addUserToDb, findUserByEmail } = require('../model/userModel');
+const { addUserToDb, findUserByEmail, getUsers } = require('../model/userModel');
 const { validateUser } = require('../middleware');
 const { jwtSecret } = require('../config');
 
@@ -42,6 +42,19 @@ userRoutes.post('/login', validateUser, async (req, res) => {
   const paylod = { userId: foundUser.id };
   const token = jwt.sign(paylod, jwtSecret, { expiresIn: '1h' });
   res.json({ success: true, msg: 'login success', token });
+});
+
+userRoutes.get('/users', async (req, res) => {
+  let conn;
+  try {
+    const articles = await getUsers();
+    res.json(articles);
+  } catch (error) {
+    console.log('error in getting articles', error);
+    res.status(500);
+  } finally {
+    conn?.end();
+  }
 });
 
 module.exports = userRoutes;

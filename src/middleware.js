@@ -1,4 +1,7 @@
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
+
+const { jwtSecret } = require('./config');
 
 async function validateUser(req, res, next) {
   const schema = Joi.object({
@@ -17,6 +20,35 @@ async function validateUser(req, res, next) {
   }
 }
 
+async function validateToken(req, res, next) {
+  const tokenFromHeaders = req.headers.authorization?.split(' ')[1];
+
+  if (!tokenFromHeaders) {
+    res.status(401).json({
+      success: false,
+
+      error: 'No valid token',
+    });
+
+    return;
+  }
+
+  try {
+    const tokenPayload = jwt.verify(tokenFromHeaders, jwtSecret);
+
+    next();
+  } catch (error) {
+    // token not valid
+
+    res.status(403).json({
+      success: false,
+
+      error: 'Invalid token',
+    });
+  }
+}
+
 module.exports = {
   validateUser,
+  validateToken,
 };
