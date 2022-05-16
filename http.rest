@@ -24,7 +24,7 @@ POST http://localhost:3000/v1/articles HTTP/1.1
 Content-Type: application/json
 
 {
-    "date": "2000-09-12",
+    "date": "2001-09-12",
     "title": "Something about css",
     "content": "This is a perfect article to read and learn more about css"
 }

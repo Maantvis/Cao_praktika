@@ -18,11 +18,15 @@ articleRoutes.get('/articles', async (req, res) => {
 });
 articleRoutes.post('/articles', async (req, res) => {
   let conn;
-  console.log(req.body);
+
   const { date, title, content } = req.body;
   try {
-    const articles = await getArticles(date, title, content);
-    res.status(201).json({ success: true });
+    const articles = await addArticle(date, title, content);
+    if (articles.affectedRows === 1) {
+      res.status(201).json({ success: true, msg: 'articles created' });
+      return;
+    }
+    res.status(400).json('no articles created');
   } catch (error) {
     console.log('error in getting articles', error);
     res.status(500);
