@@ -4,7 +4,7 @@ const { getArticles, addArticle } = require('../model/articlesModel');
 
 const articleRoutes = express.Router();
 
-articleRoutes.get('/articles', async (req, res) => {
+articleRoutes.get('/articles', validateToken, async (req, res) => {
   let conn;
   try {
     const articles = await getArticles();
