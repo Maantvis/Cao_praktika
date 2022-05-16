@@ -5,7 +5,7 @@ async function getArticles() {
   let conn;
   try {
     conn = await mysql.createConnection(dbConfig);
-    const sql = `SELECT * FROM articles`;
+    const sql = 'SELECT * FROM articles';
     const [result] = await conn.execute(sql);
     return result;
   } catch (error) {

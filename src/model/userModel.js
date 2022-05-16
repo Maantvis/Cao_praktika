@@ -20,7 +20,7 @@ async function getUsers() {
   let conn;
   try {
     conn = await mysql.createConnection(dbConfig);
-    const sql = `SELECT * FROM users`;
+    const sql = 'SELECT * FROM users';
     const [result] = await conn.execute(sql);
     return result;
   } catch (error) {
