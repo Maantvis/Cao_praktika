@@ -15,4 +15,22 @@ async function addUserToDb(email, password) {
     conn?.end();
   }
 }
-module.exports = { addUserToDb };
+async function findUserByEmail(email) {
+  let conn;
+  try {
+    conn = await mysql.createConnection(dbConfig);
+
+    const sql = `
+      SELECT * FROM users 
+      WHERE email=?
+         `;
+    const [result] = await conn.execute(sql, [email]);
+    return result;
+  } catch (error) {
+    console.log('findUserByEmail error ===', error);
+    return false;
+  } finally {
+    await conn?.end();
+  }
+}
+module.exports = { addUserToDb, findUserByEmail };
