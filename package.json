@@ -1,7 +1,6 @@
 {
   "name": "node19",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/server.js"
@@ -19,5 +18,14 @@
     "eslint": "^8.15.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maantvis/Cao_praktika.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Maantvis/Cao_praktika/issues"
+  },
+  "homepage": "https://github.com/Maantvis/Cao_praktika#readme",
+  "description": ""
 }
