@@ -13,7 +13,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./login.css" />
-    <script src="./login.js" defer></script>
+    <script type="module" src="./login.js" defer></script>
   </head>
   <body>
     <header class="head-container">
@@ -34,9 +34,21 @@
         <h2>Log in</h2>
         <div class="inputs">
           <label for="email">Email address</label>
-          <input class="standart" type="email" name="email" id="email" placeholder="Type your Email" />
+          <input
+            class="standart"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Type your Email"
+          />
           <label for="password">Password</label>
-          <input class="standart" type="password" name="password" id="password" placeholder="Type your password" />
+          <input
+            class="standart"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Type your password"
+          />
         </div>
         <button id="login-btn" type="submit">Log in</button>
       </form>

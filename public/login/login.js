@@ -1,4 +1,6 @@
+import { clearInputs, errorInputStyle, standartInputs } from '../modules/controler.js';
 const BASE_URL = 'http://localhost:3000';
+
 const formEl = document.forms[0];
 const emailInputEl = formEl.elements.email;
 const passwordInputEl = formEl.elements.password;
@@ -26,9 +28,9 @@ formEl.addEventListener('submit', async (e) => {
 });
 
 function errorHandling(arr) {
-  standartInputs(emailInputEl, passwordInputEl);
+  standartInputs([emailInputEl, passwordInputEl]);
   if (arr.success === false) {
-    clearInputs(emailInputEl, passwordInputEl);
+    clearInputs([emailInputEl, passwordInputEl]);
     errorInputStyle(emailInputEl, arr.msg, 'error', 'standart');
     errorInputStyle(passwordInputEl, arr.msg, 'error', 'standart');
     return;
@@ -38,24 +40,8 @@ function errorHandling(arr) {
       errorInputStyle(emailInputEl, errObj.message, 'error', 'standart');
     }
     if (errObj.path[0] === 'password') {
+      clearInputs([passwordInputEl]);
       errorInputStyle(passwordInputEl, errObj.message, 'error', 'standart');
     }
   });
-}
-function standartInputs(email, password) {
-  email.placeholder = 'Type your Email';
-  email.classList.remove('error');
-  email.classList.add('standart');
-  password.placeholder = 'Type your password';
-  password.classList.remove('error');
-  password.classList.add('standart');
-}
-function clearInputs(email, password) {
-  email.value = '';
-  password.value = '';
-}
-function errorInputStyle(input, msg, add, remove) {
-  input.placeholder = msg;
-  input.classList.remove(remove);
-  input.classList.add(add);
 }

@@ -13,7 +13,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./register.css" />
-    <script src="./register.js" defer></script>
+    <script type="module" src="./register.js" defer></script>
   </head>
   <body>
     <header class="head-container">
@@ -34,13 +34,25 @@
         <h2>Register</h2>
         <div class="inputs">
           <label for="email">Email address</label>
-          <input class="standart" type="email" name="email" id="email" placeholder="Type your Email" />
+          <input
+            class="standart"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Type your Email"
+          />
           <label for="password">Password</label>
-          <input class="standart" type="password" name="password" id="password" placeholder="Type your password" />
+          <input
+            class="standart"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Type your password"
+          />
           <label for="repPassword">Repeat password</label>
           <input
             class="standart"
-            type="repPassword"
+            type="password"
             name="repPassword"
             id="repPassword"
             placeholder="Repeat your password"
