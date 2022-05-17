@@ -15,7 +15,8 @@
     "express": "^4.18.1",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
     "eslint": "^8.15.0",
