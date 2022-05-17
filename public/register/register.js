@@ -1,6 +1,6 @@
 import { clearInputs, errorInputStyle, standartInputs } from '../modules/controler.js';
+import { BASE_URL } from '../modules/common.js';
 
-const BASE_URL = 'http://localhost:3000';
 const formEl = document.forms[0];
 const emailInputEl = formEl.elements.email;
 const passwordInputEl = formEl.elements.password;
