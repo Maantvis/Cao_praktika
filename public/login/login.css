@@ -1,7 +1,7 @@
 /* header section */
 body {
   background-color: #dfdfdf;
-  height: 100vh;
+  height: 97vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,7 +93,7 @@ body {
           align-items: center;
 }
 
-.loginSection .form > .inputs > input {
+.loginSection .form > .inputs > .standart {
   display: block;
   width: 200px;
   padding: 5px 7px;
@@ -110,6 +110,19 @@ body {
   border-radius: 5px;
   background-color: #dfdfdf;
   color: #6c5959;
+}
+
+.loginSection .error {
+  display: block;
+  width: 200px;
+  padding: 5px 7px;
+  border: none;
+  background-color: #f5cece;
+  border-radius: 5px;
+  margin: 5px 0;
+  font-size: 13px;
+  border: 1px solid red;
+  color: red;
 }
 
 /* footer */
