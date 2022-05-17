@@ -107,7 +107,7 @@ body {
   color: #888;
 }
 
-.articleSection .grid .card #read-more {
+.articleSection .grid .card button {
   width: 50%;
   border: 1px solid #bababa;
   border-radius: 5px;

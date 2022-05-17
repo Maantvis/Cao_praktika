@@ -82,13 +82,13 @@ body {
         color: #888;
       }
 
-      #read-more {
-        width: 50%;
-        border: 1px solid rgb(186, 186, 186);
-        border-radius: 5px;
-        background-color: rgb(223, 223, 223);
-        color: black;
-      }
+      button {
+       width: 50%;
+       border: 1px solid rgb(186, 186, 186);
+       border-radius: 5px;
+       background-color: rgb(223, 223, 223);
+       color: black;
+     }
     }
   }
 }
