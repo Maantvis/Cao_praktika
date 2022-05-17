@@ -16,18 +16,31 @@
     <script src="./login.js"></script>
   </head>
   <body>
-    <header class="header">
-      <a href="login.html"
-        ><img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Logo%21_Logo.svg/2560px-Logo%21_Logo.svg.png"
-          alt="our page logo"
-      /></a>
-      <nav class="nav">
-        <a href="#">Register</a>
-        <a href="login.html">Log in</a>
-      </nav>
+    <header class="head-container">
+      <div class="header">
+        <a href="login.html"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Logos.svg/640px-Logos.svg.png"
+            alt="our page logo"
+        /></a>
+        <nav class="nav">
+          <a href="#">Register</a>
+          <a href="login.html">Log in</a>
+        </nav>
+      </div>
     </header>
-    <section class="loginForm"></section>
+    <section class="loginSection">
+      <form class="form">
+        <h2>Log in</h2>
+        <div class="inputs">
+          <label for="email">Email address</label>
+          <input type="email" name="email" id="email" placeholder="Type your Email" />
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="Type your password" />
+        </div>
+        <button id="login-btn" type="submit">Log in</button>
+      </form>
+    </section>
     <footer class="footer">
       <p>All copy rights belong to us</p>
     </footer>
