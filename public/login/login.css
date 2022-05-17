@@ -10,6 +10,7 @@ body {
           flex-direction: column;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: monospace;
 }
 
 /* header section */
@@ -45,7 +46,7 @@ body {
 }
 
 .head-container .header .nav > a {
-  padding: 5px 10px;
+  padding: 5px 5px;
   display: inline-block;
   margin: 0 20px;
   font-size: 18px;
@@ -57,8 +58,8 @@ body {
 }
 
 .head-container .header .nav > a:hover {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 /* form section */
