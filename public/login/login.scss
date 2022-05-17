@@ -1,6 +1,9 @@
 /* header section */
 body {
   background-color: rgb(223, 223, 223);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -29,4 +32,10 @@ body {
   .nav > a:hover {
     transform: scale(1.5);
   }
+}
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  color: #999;
 }
