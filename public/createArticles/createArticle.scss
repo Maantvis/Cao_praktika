@@ -6,6 +6,7 @@ body {
   box-sizing: border-box;
   font-family: monospace;
 }
+/* header section */
 
 .head-container {
   background-color: #fff;
@@ -35,12 +36,13 @@ body {
       padding: 5px 5px;
       display: inline-block;
       margin: 0 20px;
-      font-size: 18px;
+      font-size: 14px;
       text-decoration: none;
       color: black;
       text-shadow: lightblue 1px 2px 1px;
       transition: all 0.3s;
     }
+
     .nav > a:hover {
       transform: scale(1.1);
     }
@@ -51,32 +53,33 @@ body {
 .loginSection {
   margin: 0 auto;
   display: flex;
-  min-height: 50vh;
+  min-height: 80vh;
   align-items: center;
   justify-content: center;
   color: rgb(108, 89, 89);
 
   .form {
-    max-width: 300px;
+    max-width: 600px;
+    width: 500px;
     box-shadow: #333 5px 3px 7px;
     background-color: #fff;
     padding: 15px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     align-items: center;
   }
 
   .form > .inputs > .standart {
     display: block;
-    width: 200px;
+    width: 400px;
     padding: 5px 7px;
     border: none;
     background-color: rgb(223, 223, 223);
     border-radius: 5px;
-    margin: 5px 0;
+    margin: 10px 0;
     font-size: 13px;
+    color: rgb(121, 121, 121);
   }
 
   .form #login-btn {

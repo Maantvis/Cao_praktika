@@ -4,7 +4,65 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Articles</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./articles.css" />
+    <script type="module" src="./articles.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <header class="head-container">
+      <div class="header">
+        <a href="./articles.html"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Logos.svg/640px-Logos.svg.png"
+            alt="our page logo"
+        /></a>
+        <nav class="nav">
+          <a href="./articles.html" class="active">Articles</a>
+          <a href="../createArticles/createArticle.html">Create article</a>
+          <a href="#">Your posted articles</a>
+          <a href="#">Edit profile</a>
+        </nav>
+      </div>
+    </header>
+    <section class="articleSection">
+      <h1>All articles</h1>
+      <div class="grid">
+        <div class="card">
+          <h2>Something about css</h2>
+          <p><i>2020-02-02</i></p>
+          <button id="read-more">Read more</button>
+        </div>
+        <div class="card">
+          <h2>Something about css</h2>
+          <p><i>2020-02-02</i></p>
+          <button id="read-more">Read more</button>
+        </div>
+        <div class="card">
+          <h2>Something about css</h2>
+          <p><i>2020-02-02</i></p>
+          <button id="read-more">Read more</button>
+        </div>
+        <div class="card">
+          <h2>Something about css</h2>
+          <p><i>2020-02-02</i></p>
+          <button id="read-more">Read more</button>
+        </div>
+        <div class="card">
+          <h2>Something about css</h2>
+          <p><i>2020-02-02</i></p>
+          <button id="read-more">Read more</button>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <p>All copy rights belong to us</p>
+    </footer>
+  </body>
 </html>
