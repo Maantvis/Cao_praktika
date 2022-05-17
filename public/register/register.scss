@@ -1,6 +1,6 @@
 body {
   background-color: rgb(223, 223, 223);
-  height: 97vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -26,17 +26,20 @@ body {
       margin: 5px 10px;
     }
 
+    .nav > .active {
+      border-bottom: 1px solid black;
+    }
+
     .nav > a {
       padding: 5px 10px;
       display: inline-block;
-      margin: 0 10px;
+      margin: 0 20px;
       font-size: 18px;
       text-decoration: none;
       color: black;
-      text-shadow: lightblue 1px 2px;
+      text-shadow: lightblue 1px 2px 1px;
       transition: all 0.3s;
     }
-
     .nav > a:hover {
       transform: scale(1.5);
     }
