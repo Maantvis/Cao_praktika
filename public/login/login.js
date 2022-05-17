@@ -17,7 +17,6 @@ formEl.addEventListener('submit', async (e) => {
   };
   const resp = await fetch(`${BASE_URL}/v1/login`, options);
   const data = await resp.json();
-  console.log('data ===', data);
   if (data.success === true) {
     localStorage.setItem('userToken', data.token);
     window.location.replace('../articles/articles.html');
@@ -35,13 +34,10 @@ function errorHandling(arr) {
     return;
   }
   arr.forEach((errObj) => {
-    console.log('errObj ===', errObj);
     if (errObj.path[0] === 'email') {
-      console.log('email');
       errorInputStyle(emailInputEl, errObj.message, 'error', 'standart');
     }
     if (errObj.path[0] === 'password') {
-      console.log('password');
       errorInputStyle(passwordInputEl, errObj.message, 'error', 'standart');
     }
   });
