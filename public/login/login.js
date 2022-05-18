@@ -1,12 +1,42 @@
-import { clearInputs, errorInputStyle, standartInputs } from '../modules/controler.js';
+import { clearInputs, errorInputStyle, standartInputs, clearSpan } from '../modules/controler.js';
 import { BASE_URL } from '../modules/common.js';
 
 const formEl = document.forms[0];
 const emailInputEl = formEl.elements.email;
 const passwordInputEl = formEl.elements.password;
+const emailErr = document.getElementById('emailErr');
+const passwordErr = document.getElementById('passwordErr');
 
 formEl.addEventListener('submit', async (e) => {
   e.preventDefault();
+  if (
+    emailInputEl.value === '' ||
+    passwordInputEl.value === '' ||
+    passwordInputEl.value.length < 5 ||
+    passwordInputEl.value.length > 10
+  ) {
+    clearSpan(emailErr);
+    clearSpan(passwordErr);
+    standartInputs([emailInputEl, passwordInputEl]);
+    if (emailInputEl.value === '') {
+      errorInputStyle(emailInputEl, emailErr, 'Email area cannot be empty', 'error', 'standart');
+    }
+    if (passwordInputEl.value === '') {
+      errorInputStyle(passwordInputEl, passwordErr, 'Password area cannot be empty', 'error', 'standart');
+      return;
+    }
+    if (passwordInputEl.value.length < 5 || passwordInputEl.value.length > 10) {
+      errorInputStyle(
+        passwordInputEl,
+        passwordErr,
+        'Your password should be 5 to 10 characters long',
+        'error',
+        'standart'
+      );
+    }
+    return;
+  }
+
   const options = {
     method: 'POST',
     headers: {
@@ -28,20 +58,22 @@ formEl.addEventListener('submit', async (e) => {
 });
 
 function errorHandling(arr) {
-  standartInputs([emailInputEl, passwordInputEl]);
+  clearSpan(emailErr);
+  clearSpan(passwordErr);
+  standartInputs([emailInputEl, passwordInputEl], emailErr, passwordErr);
   if (arr.success === false) {
-    clearInputs([emailInputEl, passwordInputEl]);
-    errorInputStyle(emailInputEl, arr.msg, 'error', 'standart');
-    errorInputStyle(passwordInputEl, arr.msg, 'error', 'standart');
+    // clearInputs([emailInputEl, passwordInputEl]);
+    errorInputStyle(emailInputEl, emailErr, arr.msg, 'error', 'standart');
+    errorInputStyle(passwordInputEl, passwordErr, arr.msg, 'error', 'standart');
     return;
   }
   arr.forEach((errObj) => {
     if (errObj.path[0] === 'email') {
-      errorInputStyle(emailInputEl, errObj.message, 'error', 'standart');
+      errorInputStyle(emailInputEl, emailErr, errObj.message, 'error', 'standart');
     }
     if (errObj.path[0] === 'password') {
       clearInputs([passwordInputEl]);
-      errorInputStyle(passwordInputEl, errObj.message, 'error', 'standart');
+      errorInputStyle(passwordInputEl, passwordErr, errObj.message, 'error', 'standart');
     }
   });
 }

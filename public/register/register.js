@@ -1,4 +1,9 @@
-import { clearInputs, errorInputStyle, standartInputs } from '../modules/controler.js';
+import {
+  clearInputs,
+  errorInputStyle,
+  standartInputs,
+  frontErrorValidation,
+} from '../modules/controler.js';
 import { BASE_URL } from '../modules/common.js';
 
 const formEl = document.forms[0];
@@ -6,27 +11,22 @@ const emailInputEl = formEl.elements.email;
 const passwordInputEl = formEl.elements.password;
 const repPasswordInputEl = formEl.elements.repPassword;
 
+const emailErr = document.getElementById('emailErr');
+const passwordErr = document.getElementById('passwordErr');
+const repPasswordErr = document.getElementById('repPasswordErr');
+
 formEl.addEventListener('submit', async (e) => {
   e.preventDefault();
-  if (passwordInputEl.value.length < 5) {
-    clearInputs([passwordInputEl, repPasswordInputEl]);
-    errorInputStyle(
-      passwordInputEl,
-      'Password must be atleast 5 characters long',
-      'error',
-      'standart'
-    );
-    errorInputStyle(
-      repPasswordInputEl,
-      'Password must be atleast 5 characters long',
-      'error',
-      'standart'
-    );
-  }
-  if (repPasswordInputEl.value !== passwordInputEl.value) {
-    clearInputs([emailInputEl, passwordInputEl, repPasswordInputEl]);
-    errorInputStyle(passwordInputEl, 'Password dont match', 'error', 'standart');
-    errorInputStyle(repPasswordInputEl, 'Password dont match', 'error', 'standart');
+  const front = frontErrorValidation(
+    emailInputEl,
+    passwordInputEl,
+    emailErr,
+    passwordErr,
+    repPasswordInputEl,
+    repPasswordErr
+  );
+  if (front === 'blogai') {
+    return;
   }
   const options = {
     method: 'POST',
@@ -44,7 +44,11 @@ formEl.addEventListener('submit', async (e) => {
     alert('Registration was successful');
     window.location.replace('../login/login.html');
   } else {
-    errorHandling(data);
+    if (data.msg.code === 'ER_DUP_ENTRY') {
+      errorInputStyle(emailInputEl, emailErr, 'This email is already taken', 'error', 'standart');
+    } else {
+      errorHandling(data);
+    }
   }
 });
 
