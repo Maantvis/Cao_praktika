@@ -94,8 +94,37 @@ body {
   }
 }
 
+.dropdown {
+  display: none;
+  margin-right: 30px;
+}
+
 .footer {
   margin-top: auto;
   text-align: center;
   color: #999;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav {
+    display: none;
+  }
+
+  .dropdown {
+    display: inherit;
+  }
+
+  .articleSection {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .articleSection {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }

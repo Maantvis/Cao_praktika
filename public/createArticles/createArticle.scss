@@ -79,7 +79,6 @@ body {
     margin: 10px 0;
     font-size: 13px;
     color: rgb(121, 121, 121);
-    
   }
 
   .form #login-btn {
@@ -101,10 +100,15 @@ body {
     border: 1px solid red;
     color: red;
   }
-  .spanError{
+  .spanError {
     color: red;
     display: block;
   }
+}
+
+.dropdown {
+  display: none;
+  margin: 0 30px;
 }
 
 /* footer */
@@ -113,4 +117,33 @@ body {
   margin-top: auto;
   text-align: center;
   color: #999;
+}
+
+@media screen and (max-width: 850px) {
+  .nav {
+    display: none;
+  }
+  .dropdown {
+    display: inherit;
+  }
+  body {
+    min-width: 560px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .loginSection {
+    .form > .inputs > .standart {
+      padding: 10px 15px;
+      font-size: 18px;
+    }
+
+    .form #login-btn {
+      font-size: 18px;
+    }
+
+    .form label {
+      font-size: 18px;
+    }
+  }
 }
