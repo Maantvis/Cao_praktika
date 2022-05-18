@@ -34,7 +34,6 @@ async function postArticles(token) {
   } else {
     alert('something went wrong');
   }
-  console.log('data ===', data);
 }
 
 formEl.addEventListener('submit', (e) => {

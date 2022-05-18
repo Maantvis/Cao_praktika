@@ -13,7 +13,6 @@ async function validateUser(req, res, next) {
     await schema.validateAsync(req.body, { abortEarly: false });
     next();
   } catch (error) {
-    console.log('schema.validateAsync error ===', error);
     res.status(400).json(error.details);
   }
 }
