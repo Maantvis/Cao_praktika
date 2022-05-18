@@ -119,9 +119,34 @@ body {
   color: black;
 }
 
+.dropdown {
+  display: none;
+  margin-right: 30px;
+}
+
 .footer {
   margin-top: auto;
   text-align: center;
   color: #999;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav {
+    display: none;
+  }
+  .dropdown {
+    display: inherit;
+  }
+  .articleSection .grid {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .articleSection .grid {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 /*# sourceMappingURL=singleArticle.css.map */

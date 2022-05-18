@@ -46,9 +46,11 @@ formEl.addEventListener('submit', (e) => {
 
   postArticles(token);
 });
-const signOutEl = document.getElementById('signOut');
-signOutEl.addEventListener('click', () => {
-  localStorage.removeItem('userToken');
-  localStorage.removeItem('userId');
-  window.location.replace('../login/login.html');
+const signOutEl = document.querySelectorAll('.signOut');
+signOutEl.forEach((signOut) => {
+  signOut.addEventListener('click', () => {
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('userId');
+    window.location.replace('../login/login.html');
+  });
 });

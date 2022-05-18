@@ -101,10 +101,15 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 200px;
 }
 
 .articleSection .grid .card h2 {
   color: black;
+  text-align: center;
 }
 
 .articleSection .grid .card p {
@@ -119,9 +124,34 @@ body {
   color: black;
 }
 
+.dropdown {
+  display: none;
+  margin-right: 30px;
+}
+
 .footer {
   margin-top: auto;
   text-align: center;
   color: #999;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav {
+    display: none;
+  }
+  .dropdown {
+    display: inherit;
+  }
+  .articleSection .grid {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .articleSection .grid {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 /*# sourceMappingURL=articles.css.map */
