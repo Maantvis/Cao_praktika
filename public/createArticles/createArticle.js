@@ -1,4 +1,5 @@
 import { BASE_URL } from '../modules/common.js';
+import { articlesFronEndValidation } from '../modules/controler.js';
 const token = localStorage.getItem('userToken');
 if (!token) {
   window.location.replace('../login/login.html');
@@ -6,8 +7,9 @@ if (!token) {
 const formEl = document.forms[0];
 
 const { date, title, content } = formEl.elements;
-// const titleEl = formEl.elements.title;
-// const contentEl = formEl.elements.content;
+const dateErr = document.getElementById('dateErr');
+const titleErr = document.getElementById('titleErr');
+const contentErr = document.getElementById('contentErr');
 
 async function postArticles(token) {
   const newObj = {
@@ -25,12 +27,23 @@ async function postArticles(token) {
     body: JSON.stringify(newObj),
   };
   const resp = await fetch(`${BASE_URL}/v1/articles`, options);
-  console.log('resp ===', resp);
   const data = await resp.json();
+  if (data.success === true) {
+    alert(data.msg);
+    window.location.replace('../articles/articles.html');
+  } else {
+    alert('something went wrong');
+  }
   console.log('data ===', data);
 }
 
 formEl.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  const validation = articlesFronEndValidation(date, title, content, dateErr, titleErr, contentErr);
+  if (validation === 'blogai') {
+    return;
+  }
+
   postArticles(token);
 });

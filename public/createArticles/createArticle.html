@@ -36,7 +36,8 @@
         <h2>Your new article</h2>
         <div class="inputs">
           <label for="date">Date</label>
-          <input class="standart" type="text" name="date" id="date" placeholder="YYYY-MM-DD" />
+          <input class="standart" type="date" name="date" id="date" placeholder="YYYY-MM-DD" />
+          <span id="dateErr" class="spanError"></span> <br />
           <label for="title">Article title</label>
           <input
             class="standart"
@@ -45,6 +46,7 @@
             id="title"
             placeholder="Type your article title"
           />
+          <span id="titleErr" class="spanError"></span> <br />
           <label for="content">Article content</label>
           <textarea
             class="standart"
@@ -54,6 +56,7 @@
             rows="10"
             placeholder="Type your content here"
           ></textarea>
+          <span id="contentErr" class="spanError"></span> <br />
         </div>
         <button id="login-btn" type="submit">Create article</button>
       </form>

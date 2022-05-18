@@ -61,3 +61,27 @@ function checkPasswordLength(pass, repPass, spanPass, spanRepPass) {
     return 'blogai';
   }
 }
+export function articlesFronEndValidation(date, title, content, dateErr, titleErr, contentErr) {
+  let error;
+  standartInputs([date, title, content]);
+  clearSpan(dateErr);
+  clearSpan(titleErr);
+  clearSpan(contentErr);
+  if (date.value === '') {
+    errorInputStyle(date, dateErr, 'Date area cannot be empty', 'error', 'standart');
+    error = 'blogai';
+  }
+  if (title.value === '') {
+    errorInputStyle(title, titleErr, 'Title area cannot be empty', 'error', 'standart');
+    error = 'blogai';
+  }
+  if (content.value === '') {
+    errorInputStyle(content, contentErr, 'Content area cannot be empty', 'error', 'standart');
+    error = 'blogai';
+  }
+  if (date.value.length !== 10) {
+    errorInputStyle(date, dateErr, 'Wrong date format', 'error', 'standart');
+    error = 'blogai';
+  }
+  return error;
+}
