@@ -45,12 +45,16 @@ export function frontErrorValidation(email, pass, spanEmail, spanPass, repPass, 
 
 function checkPasswordLength(pass, repPass, spanPass, spanRepPass) {
   if (pass.value.length < 5 || pass.value.length > 10) {
-    errorInputStyle(pass, spanPass, 'Your password should be 5 to 10 characters long', 'error', 'standart');
-  }
-  if (repPass.value.length < 5 || repPass.value.length > 10) {
-    errorInputStyle(repPass, spanRepPass, 'Your password should be 5 to 10 characters long', 'error', 'standart');
+    errorInputStyle(
+      pass,
+      spanPass,
+      'Your password should be 5 to 10 characters long',
+      'error',
+      'standart'
+    );
     return 'blogai';
   }
+
   if (repPass.value !== pass.value) {
     errorInputStyle(pass, spanPass, 'Password dont match', 'error', 'standart');
     errorInputStyle(repPass, spanRepPass, 'Password dont match', 'error', 'standart');

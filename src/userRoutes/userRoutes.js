@@ -10,9 +10,7 @@ const userRoutes = express.Router();
 
 userRoutes.post('/register', validateUser, async (req, res) => {
   try {
-    console.log('req.body ===', req.body);
     const { email, password } = req.body;
-
     const hashedPassword = bcrypt.hashSync(password, 10);
     const newUser = {
       email,
@@ -28,9 +26,8 @@ userRoutes.post('/register', validateUser, async (req, res) => {
     res.status(201).json({ success: true, msg: 'user created' });
   } catch (error) {
     console.log('error========', error);
-    if (error.code === 'ER_DUP_ENTRY') {
-      res.status(500).json(error.sqlMessages);
-    }
+    console.log('{ success: false, msg: error } ===', { success: false, msg: error });
+    res.status(500).json({ success: false, msg: error });
   }
 });
 userRoutes.post('/login', validateUser, async (req, res) => {

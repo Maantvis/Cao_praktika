@@ -1,4 +1,9 @@
-import { clearInputs, errorInputStyle, standartInputs, frontErrorValidation } from '../modules/controler.js';
+import {
+  clearInputs,
+  errorInputStyle,
+  standartInputs,
+  frontErrorValidation,
+} from '../modules/controler.js';
 import { BASE_URL } from '../modules/common.js';
 
 const formEl = document.forms[0];
@@ -20,7 +25,6 @@ formEl.addEventListener('submit', async (e) => {
     repPasswordInputEl,
     repPasswordErr
   );
-  console.log(front);
   if (front === 'blogai') {
     return;
   }
@@ -35,16 +39,16 @@ formEl.addEventListener('submit', async (e) => {
     }),
   };
   const resp = await fetch(`${BASE_URL}/v1/register`, options);
-  console.log(resp);
-  if (resp.ok === false) {
-    console.log('klaida');
-  }
   const data = await resp.json();
   if (data.success === true) {
     alert('Registration was successful');
     window.location.replace('../login/login.html');
   } else {
-    errorHandling(data);
+    if (data.msg.code === 'ER_DUP_ENTRY') {
+      errorInputStyle(emailInputEl, emailErr, 'This email is already taken', 'error', 'standart');
+    } else {
+      errorHandling(data);
+    }
   }
 });
 
