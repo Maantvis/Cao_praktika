@@ -55,7 +55,6 @@ formEl.addEventListener('submit', async (e) => {
   };
   const resp = await fetch(`${BASE_URL}/v1/login`, options);
   const data = await resp.json();
-  console.log('data ===', data);
   if (data.success === true) {
     localStorage.setItem('userToken', data.token);
     localStorage.setItem('userId', data.paylod.userId);

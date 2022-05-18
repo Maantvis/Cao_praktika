@@ -1,7 +1,7 @@
 import { BASE_URL } from '../modules/common.js';
+const id = localStorage.getItem('userId');
 const cardsContainerEl = document.querySelector('.grid');
 const token = localStorage.getItem('userToken');
-
 if (!token) {
   window.location.replace('../login/login.html');
 }
@@ -32,8 +32,8 @@ function genCards(arr, dest) {
   });
 }
 
-async function getArticles(token) {
-  const resp = await fetch(`${BASE_URL}/v1/articles`, {
+async function getArticles(token, id) {
+  const resp = await fetch(`${BASE_URL}/v1/articles/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -42,9 +42,10 @@ async function getArticles(token) {
     window.location.replace('../login/login.html');
   }
   const data = await resp.json();
+
   genCards(data.articles, cardsContainerEl);
 }
-getArticles(token);
+getArticles(token, id);
 const signOutEl = document.getElementById('signOut');
 signOutEl.addEventListener('click', () => {
   localStorage.removeItem('userToken');

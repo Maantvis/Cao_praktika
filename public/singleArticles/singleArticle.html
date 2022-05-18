@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Articles</title>
+    <title>Your posted articles</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -12,27 +12,27 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./articles.css" />
-    <script type="module" src="./articles.js" defer></script>
+    <link rel="stylesheet" href="./singleArticle.css" />
+    <script type="module" src="./singleArticle.js" defer></script>
   </head>
   <body>
     <header class="head-container">
       <div class="header">
-        <a href="./articles.html"
+        <a href="../articles/articles.html"
           ><img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Logos.svg/640px-Logos.svg.png"
             alt="our page logo"
         /></a>
         <nav class="nav">
-          <a href="./articles.html" class="active">Articles</a>
+          <a href="../articles/articles.html">Articles</a>
           <a href="../createArticles/createArticle.html">Create article</a>
-          <a href="../singleArticles/singleArticle.html">Your posted articles</a>
+          <a href="./singleArticle.html" class="active">Your posted articles</a>
           <a href="#" id="signOut">Sign out</a>
         </nav>
       </div>
     </header>
     <section class="articleSection">
-      <h1>All articles</h1>
+      <h1>Your posted articles</h1>
       <div class="grid">
         <h2>Loading...</h2>
       </div>

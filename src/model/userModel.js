@@ -23,7 +23,6 @@ async function getUsers() {
     const [result] = await conn.execute(sql);
     return result;
   } catch (error) {
-    console.log('getUsers error ===', error);
     return false;
   } finally {
     await conn?.end();
@@ -42,7 +41,6 @@ async function findUserByEmail(email) {
     const [result] = await conn.execute(sql, [email]);
     return result;
   } catch (error) {
-    console.log('findUserByEmail error ===', error);
     return false;
   } finally {
     await conn?.end();

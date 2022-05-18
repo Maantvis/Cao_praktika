@@ -17,16 +17,10 @@ userRoutes.post('/register', validateUser, async (req, res) => {
       password: hashedPassword,
     };
 
-    const insertResult = await addUserToDb(newUser.email, newUser.password);
-    // console.log('insertResult ===== ', insertResult);
-    // if (insertResult === false) {
-    //   return;
-    // }
+    await addUserToDb(newUser.email, newUser.password);
 
     res.status(201).json({ success: true, msg: 'user created' });
   } catch (error) {
-    console.log('error========', error);
-    console.log('{ success: false, msg: error } ===', { success: false, msg: error });
     res.status(500).json({ success: false, msg: error });
   }
 });
@@ -54,7 +48,6 @@ userRoutes.get('/users', async (req, res) => {
     const articles = await getUsers();
     res.json(articles);
   } catch (error) {
-    console.log('error in getting articles', error);
     res.status(500);
   } finally {
     conn?.end();
