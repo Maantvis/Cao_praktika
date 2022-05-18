@@ -1,6 +1,7 @@
 import { BASE_URL } from '../modules/common.js';
 const cardsContainerEl = document.querySelector('.grid');
 const token = localStorage.getItem('userToken');
+
 if (!token) {
   window.location.replace('../login/login.html');
 }
@@ -44,3 +45,9 @@ async function getArticles(token) {
   genCards(data.articles, cardsContainerEl);
 }
 getArticles(token);
+const signOutEl = document.getElementById('signOut');
+signOutEl.addEventListener('click', () => {
+  localStorage.removeItem('userToken');
+  localStorage.removeItem('userId');
+  window.location.replace('../login/login.html');
+});

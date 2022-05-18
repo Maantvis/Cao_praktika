@@ -46,3 +46,9 @@ async function getArticles(token, id) {
   genCards(data.articles, cardsContainerEl);
 }
 getArticles(token, id);
+const signOutEl = document.getElementById('signOut');
+signOutEl.addEventListener('click', () => {
+  localStorage.removeItem('userToken');
+  localStorage.removeItem('userId');
+  window.location.replace('../login/login.html');
+});
