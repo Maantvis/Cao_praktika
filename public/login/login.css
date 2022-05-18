@@ -64,11 +64,10 @@ body {
 
 /* form section */
 .loginSection {
-  margin: 0 auto;
+  margin: 5% auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 50vh;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -79,7 +78,7 @@ body {
 }
 
 .loginSection .form {
-  max-width: 300px;
+  max-width: 500px;
   -webkit-box-shadow: #333 5px 3px 7px;
           box-shadow: #333 5px 3px 7px;
   background-color: #fff;
@@ -100,9 +99,9 @@ body {
 
 .loginSection .form > .inputs > .standart {
   display: block;
-  width: 200px;
+  width: 300px;
   padding: 5px 7px;
-  border: none;
+  border: 1px solid white;
   background-color: #dfdfdf;
   border-radius: 5px;
   margin: 5px 0;
@@ -119,9 +118,8 @@ body {
 
 .loginSection .error {
   display: block;
-  width: 200px;
+  width: 300px;
   padding: 5px 7px;
-  border: none;
   background-color: #f5cece;
   border-radius: 5px;
   margin: 5px 0;
