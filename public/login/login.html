@@ -34,21 +34,11 @@
         <h2>Log in</h2>
         <div class="inputs">
           <label for="email">Email address</label>
-          <input
-            class="standart"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Type your Email"
-          />
+          <input class="standart" type="email" name="email" id="email" placeholder="Type your Email" />
+          <span id="emailErr" class="spanError"></span> <br />
           <label for="password">Password</label>
-          <input
-            class="standart"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Type your password"
-          />
+          <input class="standart" type="password" name="password" id="password" placeholder="Type your password" />
+          <span id="passwordErr" class="spanError"></span> <br />
         </div>
         <button id="login-btn" type="submit">Log in</button>
       </form>

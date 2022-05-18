@@ -9,8 +9,7 @@ async function addUserToDb(email, password) {
     const [result] = await conn.execute(sql, [email, password]);
     return result;
   } catch (error) {
-    console.log('error addUsersToDb', error);
-    return false;
+    throw error;
   } finally {
     conn?.end();
   }

@@ -9,22 +9,29 @@ const { jwtSecret } = require('../config');
 const userRoutes = express.Router();
 
 userRoutes.post('/register', validateUser, async (req, res) => {
-  console.log('req.body ===', req.body);
-  const { email, password } = req.body;
+  try {
+    console.log('req.body ===', req.body);
+    const { email, password } = req.body;
 
-  const hashedPassword = bcrypt.hashSync(password, 10);
-  const newUser = {
-    email,
-    password: hashedPassword,
-  };
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const newUser = {
+      email,
+      password: hashedPassword,
+    };
 
-  const insertResult = await addUserToDb(newUser.email, newUser.password);
-  if (insertResult === false) {
-    res.status(500).json({ success: false, msg: 'something is wrong' });
-    return;
+    const insertResult = await addUserToDb(newUser.email, newUser.password);
+    // console.log('insertResult ===== ', insertResult);
+    // if (insertResult === false) {
+    //   return;
+    // }
+
+    res.status(201).json({ success: true, msg: 'user created' });
+  } catch (error) {
+    console.log('error========', error);
+    if (error.code === 'ER_DUP_ENTRY') {
+      res.status(500).json(error.sqlMessages);
+    }
   }
-
-  res.status(201).json({ success: true, msg: 'user created' });
 });
 userRoutes.post('/login', validateUser, async (req, res) => {
   const { email, password } = req.body;
