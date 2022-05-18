@@ -22,7 +22,13 @@ formEl.addEventListener('submit', async (e) => {
       errorInputStyle(emailInputEl, emailErr, 'Email area cannot be empty', 'error', 'standart');
     }
     if (passwordInputEl.value === '') {
-      errorInputStyle(passwordInputEl, passwordErr, 'Password area cannot be empty', 'error', 'standart');
+      errorInputStyle(
+        passwordInputEl,
+        passwordErr,
+        'Password area cannot be empty',
+        'error',
+        'standart'
+      );
       return;
     }
     if (passwordInputEl.value.length < 5 || passwordInputEl.value.length > 10) {
@@ -49,8 +55,10 @@ formEl.addEventListener('submit', async (e) => {
   };
   const resp = await fetch(`${BASE_URL}/v1/login`, options);
   const data = await resp.json();
+  console.log('data ===', data);
   if (data.success === true) {
     localStorage.setItem('userToken', data.token);
+    localStorage.setItem('userId', data.paylod.userId);
     window.location.replace('../articles/articles.html');
   } else {
     errorHandling(data);

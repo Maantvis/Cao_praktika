@@ -45,7 +45,7 @@ userRoutes.post('/login', validateUser, async (req, res) => {
   }
   const paylod = { userId: foundUser.id };
   const token = jwt.sign(paylod, jwtSecret, { expiresIn: '1h' });
-  res.json({ success: true, msg: 'login success', token });
+  res.json({ success: true, msg: 'login success', token, paylod });
 });
 
 userRoutes.get('/users', async (req, res) => {
