@@ -33,7 +33,8 @@ async function validateToken(req, res, next) {
 
   try {
     const tokenPayload = jwt.verify(tokenFromHeaders, jwtSecret);
-
+    const userId = tokenPayload.userId;
+    req.userId = userId;
     next();
   } catch (error) {
     // token not valid

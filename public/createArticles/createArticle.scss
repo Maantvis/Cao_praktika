@@ -73,12 +73,13 @@ body {
     display: block;
     width: 400px;
     padding: 5px 7px;
-    border: none;
+    border: 1px solid white;
     background-color: rgb(223, 223, 223);
     border-radius: 5px;
     margin: 10px 0;
     font-size: 13px;
     color: rgb(121, 121, 121);
+    
   }
 
   .form #login-btn {
@@ -90,7 +91,7 @@ body {
   }
   .error {
     display: block;
-    width: 200px;
+    width: 400px;
     padding: 5px 7px;
     border: none;
     background-color: rgb(245, 206, 206);
@@ -99,6 +100,10 @@ body {
     font-size: 13px;
     border: 1px solid red;
     color: red;
+  }
+  .spanError{
+    color: red;
+    display: block;
   }
 }
 

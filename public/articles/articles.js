@@ -41,7 +41,7 @@ async function getArticles(token) {
     window.location.replace('../login/login.html');
   }
   const data = await resp.json();
-
-  genCards(data, cardsContainerEl);
+  console.log('data ===', data);
+  genCards(data.articles, cardsContainerEl);
 }
 getArticles(token);

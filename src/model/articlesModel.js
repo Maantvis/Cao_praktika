@@ -16,13 +16,14 @@ async function getArticles() {
   }
 }
 
-async function addArticle(date, title, content) {
+async function addArticle(date, title, content, user_id) {
   let conn;
-  console.log(date, title, content);
+
   try {
     conn = await mysql.createConnection(dbConfig);
-    const sql = 'INSERT INTO articles (date, title, content) VALUES (?, ?, ?)';
-    const [result] = await conn.execute(sql, [date, title, content]);
+    const sql = 'INSERT INTO articles (date, title, content, user_id) VALUES (?,?, ?, ?)';
+    const [result] = await conn.execute(sql, [date, title, content, user_id]);
+    console.log('result ===', result);
     return result;
   } catch (error) {
     console.log('error addArticle', error);

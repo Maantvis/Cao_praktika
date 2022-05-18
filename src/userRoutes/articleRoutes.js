@@ -8,7 +8,7 @@ articleRoutes.get('/articles', validateToken, async (req, res) => {
   let conn;
   try {
     const articles = await getArticles();
-    res.json(articles);
+    res.json({ articles, user_id: req.userId });
   } catch (error) {
     console.log('error in getting articles', error);
     res.status(500);
@@ -16,12 +16,13 @@ articleRoutes.get('/articles', validateToken, async (req, res) => {
     conn?.end();
   }
 });
-articleRoutes.post('/articles', async (req, res) => {
+articleRoutes.post('/articles', validateToken, async (req, res) => {
   let conn;
 
-  const { date, title, content } = req.body;
+  const { date, title, content, user_id } = req.body;
   try {
-    const articles = await addArticle(date, title, content);
+    const articles = await addArticle(date, title, content, user_id);
+    console.log('articles ===', articles);
     if (articles.affectedRows === 1) {
       res.status(201).json({ success: true, msg: 'articles created' });
       return;

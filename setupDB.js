@@ -24,3 +24,5 @@ runcomand();
 // CREATE TABLE defaultdb ( id INT AUTO_INCREMENT , email VARCHAR(255) , password VARCHAR(255) , reg_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (id), UNIQUE (email)) ENGINE = InnoDB
 
 // CREATE TABLE articles (id INT AUTO_INCREMENT , date DATE , title TEXT , content TEXT, PRIMARY KEY (id)) ENGINE = InnoDB
+
+// CREATE TABLE articles (id INT AUTO_INCREMENT , date DATE , title TEXT , content TEXT,user_id INT, PRIMARY KEY (id)) ENGINE = InnoDB
