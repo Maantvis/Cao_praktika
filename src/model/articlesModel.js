@@ -32,6 +32,20 @@ async function getArticle(id) {
     await conn?.end();
   }
 }
+async function updateArticle(id, date, title, content) {
+  let conn;
+  try {
+    conn = await mysql.createConnection(dbConfig);
+
+    const sql = `UPDATE articles SET date = ? ,title = ? ,content = ? WHERE id=${id.id} `;
+    const [result] = await conn.execute(sql, [date, title, content]);
+    return result;
+  } catch (error) {
+    return false;
+  } finally {
+    await conn?.end();
+  }
+}
 
 async function addArticle(date, title, content, user_id) {
   let conn;
@@ -49,4 +63,4 @@ async function addArticle(date, title, content, user_id) {
   }
 }
 
-module.exports = { getArticles, addArticle, getArticle };
+module.exports = { getArticles, addArticle, getArticle, updateArticle };

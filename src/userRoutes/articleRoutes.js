@@ -1,6 +1,6 @@
 const express = require('express');
 const { validateToken } = require('../middleware');
-const { getArticles, addArticle, getArticle } = require('../model/articlesModel');
+const { getArticles, addArticle, getArticle, updateArticle } = require('../model/articlesModel');
 
 const articleRoutes = express.Router();
 
@@ -51,6 +51,19 @@ articleRoutes.post('/articles', validateToken, async (req, res) => {
       return;
     }
     res.status(400).json('no articles created');
+  } catch (error) {
+    res.status(500);
+  } finally {
+    conn?.end();
+  }
+});
+articleRoutes.patch('/article/edit/:id', validateToken, async (req, res) => {
+  const id = req.params;
+  const { date, title, content } = req.body;
+  let conn;
+  try {
+    const result = await updateArticle(id, date, title, content);
+    res.json({ result, user_id: req.userId });
   } catch (error) {
     res.status(500);
   } finally {

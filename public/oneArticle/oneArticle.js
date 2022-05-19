@@ -62,8 +62,39 @@ submitBtnEl.addEventListener('click', (e) => {
   e.preventDefault();
 
   const obj = {
-    date: dateInpEl.value,
-    title: titleInpEl.value,
-    content: contentInpEl.value,
+    date: dateInpEl.value === '' ? dateEl.textContent : dateInpEl.value,
+    title: titleInpEl.value === '' ? titleEl.textContent : titleInpEl.value,
+    content: contentInpEl.value === '' ? contentEl.textContent : contentInpEl.value,
   };
+  updatePost(id, token, obj);
 });
+
+async function updatePost(id, token, obj) {
+  const resp = await fetch(`${BASE_URL}/v1/article/edit/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    method: 'PATCH',
+    body: JSON.stringify(obj),
+  });
+  console.log('resp ===', resp);
+  const data = await resp.json();
+  console.log('data ===', data);
+  if (data.result.affectedRows !== 1) {
+    alert('something went wrong');
+    return;
+  }
+  titleInpEl.value = '';
+  contentEl.value = '';
+  dateInpEl.value = '';
+  editBtn.textContent === 'Edit'
+    ? (editBtn.textContent = 'Cancel')
+    : (editBtn.textContent = 'Edit');
+
+  titleInpEl.classList.toggle('hidden');
+  contentInpEl.classList.toggle('hidden');
+  dateInpEl.classList.toggle('hidden');
+  submitBtnEl.classList.toggle('hidden');
+  getArticles(token);
+}
