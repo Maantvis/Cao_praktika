@@ -41,13 +41,37 @@
       <div class="heroSection">
         <div class="hero">
           <h1>Article</h1>
-          <button id="backBtn" class="backBtn">Back</button>
+          <button id="backBtn" class="backBtn" onclick="history.back()">Back</button>
         </div>
       </div>
       <div class="card">
-        <h2>title</h2>
-        <p>content</p>
-        <p><i>200000</i></p>
+        <div class="cardInfo">
+          <h2>title</h2>
+          <input class="standart hidden" type="text" name="title" id="title" placeholder="Title" />
+          <p class="content">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores odio expedita,
+            accusamus blanditiis nesciunt harum quas sed ipsam illum perspiciatis! Voluptas saepe
+            reprehenderit, consectetur recusandae natus ipsum sapiente itaque dignissimos.
+          </p>
+          <textarea
+            class="standart hidden"
+            name="content"
+            id="content"
+            cols="30"
+            rows="10"
+            placeholder="Type your content here"
+          ></textarea>
+          <p><i>200000</i></p>
+          <input
+            class="standart hidden"
+            type="date"
+            name="date"
+            id="date"
+            placeholder="YYYY-MM-DD"
+          />
+          <br />
+          <button class="hidden">submit</button>
+        </div>
         <div class="controlerBtn">
           <button>Edit</button>
           <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
