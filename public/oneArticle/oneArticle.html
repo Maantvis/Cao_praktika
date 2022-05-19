@@ -45,14 +45,20 @@
         </div>
       </div>
       <div class="card">
-        <div class="cardInfo">
+        <form class="cardInfo">
           <h2 id="title"></h2>
-          <input class="standart hidden" type="text" name="title" id="title" placeholder="Title" />
+          <input
+            class="standart hidden"
+            type="text"
+            name="title"
+            id="titleInp"
+            placeholder="Title"
+          />
           <p id="content" class="content"></p>
           <textarea
             class="standart hidden"
             name="content"
-            id="content"
+            id="contentInp"
             cols="30"
             rows="10"
             placeholder="Type your content here"
@@ -62,14 +68,14 @@
             class="standart hidden"
             type="date"
             name="date"
-            id="date"
+            id="dateInp"
             placeholder="YYYY-MM-DD"
           />
           <br />
-          <button class="hidden">submit</button>
-        </div>
+          <button class="hidden" type="submit" id="submitBtn">submit</button>
+        </form>
         <div class="controlerBtn">
-          <button>Edit</button>
+          <button id="editBtn">Edit</button>
           <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
         </div>
       </div>
