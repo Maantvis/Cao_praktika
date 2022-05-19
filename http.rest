@@ -43,3 +43,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
     
 }
 ###
+DELETE http://localhost:3000/v1/article/delete/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjk5MTk3MSwiZXhwIjoxNjUyOTk1NTcxfQ.ZMKhZdh6JkGxKTy9sNQV6_wTpAbJ6NJQ10bsatFqGoI
+
+###

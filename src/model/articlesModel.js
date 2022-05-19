@@ -62,5 +62,20 @@ async function addArticle(date, title, content, user_id) {
     conn?.end();
   }
 }
+async function deleteArticle(id) {
+  let conn;
 
-module.exports = { getArticles, addArticle, getArticle, updateArticle };
+  try {
+    conn = await mysql.createConnection(dbConfig);
+    const sql = `DELETE FROM articles WHERE id=${id.id}`;
+    const [result] = await conn.execute(sql, [id]);
+
+    return result;
+  } catch (error) {
+    return false;
+  } finally {
+    conn?.end();
+  }
+}
+
+module.exports = { getArticles, addArticle, getArticle, updateArticle, deleteArticle };

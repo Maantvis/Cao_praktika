@@ -1,6 +1,12 @@
 const express = require('express');
 const { validateToken } = require('../middleware');
-const { getArticles, addArticle, getArticle, updateArticle } = require('../model/articlesModel');
+const {
+  getArticles,
+  addArticle,
+  getArticle,
+  updateArticle,
+  deleteArticle,
+} = require('../model/articlesModel');
 
 const articleRoutes = express.Router();
 
@@ -63,6 +69,18 @@ articleRoutes.patch('/article/edit/:id', validateToken, async (req, res) => {
   let conn;
   try {
     const result = await updateArticle(id, date, title, content);
+    res.json({ result, user_id: req.userId });
+  } catch (error) {
+    res.status(500);
+  } finally {
+    conn?.end();
+  }
+});
+articleRoutes.delete('/article/delete/:id', validateToken, async (req, res) => {
+  const id = req.params;
+  let conn;
+  try {
+    const result = await deleteArticle(id);
     res.json({ result, user_id: req.userId });
   } catch (error) {
     res.status(500);
