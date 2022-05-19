@@ -47,6 +47,9 @@ formEl.addEventListener('submit', (e) => {
   postArticles(token);
 });
 const signOutEl = document.querySelectorAll('.signOut');
+
+console.log(signOutEl);
+
 signOutEl.forEach((signOut) => {
   signOut.addEventListener('click', () => {
     localStorage.removeItem('userToken');

@@ -45,9 +45,11 @@ async function getArticles(token) {
   genCards(data.articles, cardsContainerEl);
 }
 getArticles(token);
+
 const signOutEl = document.querySelectorAll('.signOut');
 signOutEl.forEach((signOut) => {
   signOut.addEventListener('click', () => {
+    console.log('clicked');
     localStorage.removeItem('userToken');
     localStorage.removeItem('userId');
     window.location.replace('../login/login.html');

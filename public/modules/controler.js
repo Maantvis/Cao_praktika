@@ -45,13 +45,7 @@ export function frontErrorValidation(email, pass, spanEmail, spanPass, repPass, 
 
 function checkPasswordLength(pass, repPass, spanPass, spanRepPass) {
   if (pass.value.length < 5 || pass.value.length > 10) {
-    errorInputStyle(
-      pass,
-      spanPass,
-      'Your password should be 5 to 10 characters long',
-      'error',
-      'standart'
-    );
+    errorInputStyle(pass, spanPass, 'Your password should be 5 to 10 characters long', 'error', 'standart');
     return 'blogai';
   }
 
@@ -67,6 +61,10 @@ export function articlesFronEndValidation(date, title, content, dateErr, titleEr
   clearSpan(dateErr);
   clearSpan(titleErr);
   clearSpan(contentErr);
+  if (date.value.length !== 10) {
+    errorInputStyle(date, dateErr, 'Wrong date format', 'error', 'standart');
+    error = 'blogai';
+  }
   if (date.value === '') {
     errorInputStyle(date, dateErr, 'Date area cannot be empty', 'error', 'standart');
     error = 'blogai';
@@ -77,10 +75,6 @@ export function articlesFronEndValidation(date, title, content, dateErr, titleEr
   }
   if (content.value === '') {
     errorInputStyle(content, contentErr, 'Content area cannot be empty', 'error', 'standart');
-    error = 'blogai';
-  }
-  if (date.value.length !== 10) {
-    errorInputStyle(date, dateErr, 'Wrong date format', 'error', 'standart');
     error = 'blogai';
   }
   return error;
