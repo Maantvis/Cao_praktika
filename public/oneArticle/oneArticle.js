@@ -7,6 +7,7 @@ const titleEl = document.getElementById('title');
 const contentEl = document.getElementById('content');
 const dateEl = document.getElementById('date');
 const editBtn = document.getElementById('editBtn');
+const deleteBtn = document.getElementById('deleteBtn');
 
 const titleInpEl = document.getElementById('titleInp');
 const contentInpEl = document.getElementById('contentInp');
@@ -36,7 +37,6 @@ async function getArticles(token) {
     window.location.replace('../login/login.html');
   }
   const data = await resp.json();
-  console.log('data ===', data);
   renderContent(data.article);
   article = data.article[0].user_id;
 }
@@ -78,9 +78,9 @@ async function updatePost(id, token, obj) {
     method: 'PATCH',
     body: JSON.stringify(obj),
   });
-  console.log('resp ===', resp);
+
   const data = await resp.json();
-  console.log('data ===', data);
+
   if (data.result.affectedRows !== 1) {
     alert('something went wrong');
     return;
@@ -97,4 +97,32 @@ async function updatePost(id, token, obj) {
   dateInpEl.classList.toggle('hidden');
   submitBtnEl.classList.toggle('hidden');
   getArticles(token);
+}
+
+deleteBtn.addEventListener('click', () => {
+  if (article !== +localStorage.getItem('userId')) {
+    alert('You can only delete your post');
+    return;
+  }
+  const ats = confirm('Do you wanna delete this article');
+  if (ats === false) {
+    return;
+  }
+  deleteArticle(id, token);
+});
+async function deleteArticle(id, token) {
+  const resp = await fetch(`${BASE_URL}/v1/article/delete/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method: 'DELETE',
+  });
+
+  const data = await resp.json();
+
+  if (data.result.affectedRows !== 1) {
+    alert('something went wrong');
+    return;
+  }
+  window.location.replace('../articles/articles.html');
 }
