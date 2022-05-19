@@ -18,6 +18,20 @@ async function getArticles(id) {
     await conn?.end();
   }
 }
+async function getArticle(id) {
+  let conn;
+  try {
+    conn = await mysql.createConnection(dbConfig);
+
+    const sql = `SELECT * FROM articles WHERE id=${id.id} `;
+    const [result] = await conn.execute(sql);
+    return result;
+  } catch (error) {
+    return false;
+  } finally {
+    await conn?.end();
+  }
+}
 
 async function addArticle(date, title, content, user_id) {
   let conn;
@@ -35,4 +49,4 @@ async function addArticle(date, title, content, user_id) {
   }
 }
 
-module.exports = { getArticles, addArticle };
+module.exports = { getArticles, addArticle, getArticle };

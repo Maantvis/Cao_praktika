@@ -6,7 +6,7 @@ if (!token) {
   window.location.replace('../login/login.html');
 }
 
-function cardCreate(title, date) {
+function cardCreate(title, date, id) {
   const divEl = document.createElement('div');
   divEl.classList.add('card');
 
@@ -19,6 +19,9 @@ function cardCreate(title, date) {
   pEl.append(iEl);
 
   const btnEl = document.createElement('button');
+  btnEl.addEventListener('click', () => {
+    window.location.href = `../oneArticle/oneArticle.html?=${id}`;
+  });
 
   btnEl.textContent = 'Read more';
   divEl.append(h2El, pEl, btnEl);
@@ -28,7 +31,7 @@ function cardCreate(title, date) {
 function genCards(arr, dest) {
   dest.innerHTML = '';
   arr.forEach((obj) => {
-    dest.append(cardCreate(obj.title, obj.date));
+    dest.append(cardCreate(obj.title, obj.date, obj.id));
   });
 }
 

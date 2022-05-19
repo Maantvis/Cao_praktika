@@ -1,6 +1,6 @@
 const express = require('express');
 const { validateToken } = require('../middleware');
-const { getArticles, addArticle } = require('../model/articlesModel');
+const { getArticles, addArticle, getArticle } = require('../model/articlesModel');
 
 const articleRoutes = express.Router();
 
@@ -9,6 +9,18 @@ articleRoutes.get('/articles', validateToken, async (req, res) => {
   try {
     const articles = await getArticles();
     res.json({ articles, user_id: req.userId });
+  } catch (error) {
+    res.status(500);
+  } finally {
+    conn?.end();
+  }
+});
+articleRoutes.get('/article/:id', validateToken, async (req, res) => {
+  const id = req.params;
+  let conn;
+  try {
+    const article = await getArticle(id);
+    res.json({ article, user_id: req.userId });
   } catch (error) {
     res.status(500);
   } finally {

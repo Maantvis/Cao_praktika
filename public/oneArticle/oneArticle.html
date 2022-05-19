@@ -30,7 +30,7 @@
             alt="our page logo"
         /></a>
         <nav class="nav">
-          <a href="./articles.html" class="active">Articles</a>
+          <a href="../articles/articles.html">Articles</a>
           <a href="../createArticles/createArticle.html">Create article</a>
           <a href="../singleArticles/singleArticle.html">Your posted articles</a>
           <a href="#" id="signOut">Sign out</a>
@@ -46,13 +46,9 @@
       </div>
       <div class="card">
         <div class="cardInfo">
-          <h2>title</h2>
+          <h2 id="title"></h2>
           <input class="standart hidden" type="text" name="title" id="title" placeholder="Title" />
-          <p class="content">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores odio expedita,
-            accusamus blanditiis nesciunt harum quas sed ipsam illum perspiciatis! Voluptas saepe
-            reprehenderit, consectetur recusandae natus ipsum sapiente itaque dignissimos.
-          </p>
+          <p id="content" class="content"></p>
           <textarea
             class="standart hidden"
             name="content"
@@ -61,7 +57,7 @@
             rows="10"
             placeholder="Type your content here"
           ></textarea>
-          <p><i>200000</i></p>
+          <p><i id="date"></i></p>
           <input
             class="standart hidden"
             type="date"
