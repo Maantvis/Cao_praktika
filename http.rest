@@ -32,3 +32,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
     "user_id":1
 }
 ###
+PATCH http://localhost:3000/v1/article/edit/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjk2MjM3NSwiZXhwIjoxNjUyOTY1OTc1fQ.7i1ifIjXkpqODfpThbePk5-KLbO1OAIx4e7W6wpVuvU
+
+{
+    "date": "2001-09-12",
+    "title": "testEdit",
+    "content": "This is a perfect article to read and learn more about css"
+    
+}
+###
+DELETE http://localhost:3000/v1/article/delete/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjk5MTk3MSwiZXhwIjoxNjUyOTk1NTcxfQ.ZMKhZdh6JkGxKTy9sNQV6_wTpAbJ6NJQ10bsatFqGoI
+
+###

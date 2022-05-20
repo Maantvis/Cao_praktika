@@ -18,6 +18,34 @@ async function getArticles(id) {
     await conn?.end();
   }
 }
+async function getArticle(id) {
+  let conn;
+  try {
+    conn = await mysql.createConnection(dbConfig);
+
+    const sql = `SELECT * FROM articles WHERE id=${id.id} `;
+    const [result] = await conn.execute(sql);
+    return result;
+  } catch (error) {
+    return false;
+  } finally {
+    await conn?.end();
+  }
+}
+async function updateArticle(id, date, title, content) {
+  let conn;
+  try {
+    conn = await mysql.createConnection(dbConfig);
+
+    const sql = `UPDATE articles SET date = ? ,title = ? ,content = ? WHERE id=${id.id} `;
+    const [result] = await conn.execute(sql, [date, title, content]);
+    return result;
+  } catch (error) {
+    return false;
+  } finally {
+    await conn?.end();
+  }
+}
 
 async function addArticle(date, title, content, user_id) {
   let conn;
@@ -34,5 +62,20 @@ async function addArticle(date, title, content, user_id) {
     conn?.end();
   }
 }
+async function deleteArticle(id) {
+  let conn;
 
-module.exports = { getArticles, addArticle };
+  try {
+    conn = await mysql.createConnection(dbConfig);
+    const sql = `DELETE FROM articles WHERE id=${id.id}`;
+    const [result] = await conn.execute(sql, [id]);
+
+    return result;
+  } catch (error) {
+    return false;
+  } finally {
+    conn?.end();
+  }
+}
+
+module.exports = { getArticles, addArticle, getArticle, updateArticle, deleteArticle };
