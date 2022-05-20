@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./oneArticle.css" />
+    <script type="module" src="./oneArticle.js" defer></script>
+  </head>
+  <body>
+    <header class="head-container">
+      <div class="header">
+        <a href="./articles.html"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Logos.svg/640px-Logos.svg.png"
+            alt="our page logo"
+        /></a>
+        <nav class="nav">
+          <a href="../articles/articles.html">Articles</a>
+          <a href="../createArticles/createArticle.html">Create article</a>
+          <a href="../singleArticles/singleArticle.html">Your posted articles</a>
+          <a href="#" id="signOut">Sign out</a>
+        </nav>
+      </div>
+    </header>
+    <section class="articleSection">
+      <div class="heroSection">
+        <div class="hero">
+          <h1>Article</h1>
+          <button id="backBtn" class="backBtn" onclick="history.back()">Back</button>
+        </div>
+      </div>
+      <div class="card">
+        <form class="cardInfo">
+          <h2 id="title"></h2>
+          <input
+            class="standart hidden"
+            type="text"
+            name="title"
+            id="titleInp"
+            placeholder="Title"
+          />
+          <p id="content" class="content"></p>
+          <textarea
+            class="standart hidden"
+            name="content"
+            id="contentInp"
+            cols="30"
+            rows="10"
+            placeholder="Type your content here"
+          ></textarea>
+          <p><i id="date"></i></p>
+          <input
+            class="standart hidden"
+            type="date"
+            name="date"
+            id="dateInp"
+            placeholder="YYYY-MM-DD"
+          />
+          <br />
+          <button class="hidden" type="submit" id="submitBtn">submit</button>
+        </form>
+        <div class="controlerBtn">
+          <button id="editBtn">Edit</button>
+          <button id="deleteBtn"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <p>All copy rights belong to us</p>
+    </footer>
+  </body>
+</html>
